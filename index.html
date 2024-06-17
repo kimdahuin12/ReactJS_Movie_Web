@@ -7,40 +7,21 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    // 해당 코드를 통해 React 요소를 생성할 수 있다.
-    // const h3 = React.createElement("h3", 
-    //     { id: "sexy-h3", style: { color: "red" }, 
-    //     onMouseEnter: () => {
-    //             console.log("mouse enter");
-    //         } },
-    //     "Hello I'm h3"
-    // );
-    // 아래와 같이 JSX를 이용할 경우 더욱 간편하게 할 수 있다.
-    const Title = () => (
-        <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
-            Hello I'm a title
-        </h3>
-    );
-    
-    // const button = React.createElement("button", {
-    //         onClick: () => console.log("im clicked"),
-    //         style: {
-    //             "backgroundColor": "tomato"
-    //         }
-    //     },"Click me"
-    // );
 
-    const Button = () => (<button style={{
-        "backgroundColor": "tomato"
-    }} onClick={() => console.log("im clicked")}>Click me</button>);
-    // const container = React.createElement("div", null, [Title, Button]);
-    const Container = <div>
-            <Title/>
-            <Button/>
-            <Button/>
-            <Button/>
-            <Button/>
-        </div>;
-    ReactDOM.render(Container, root);
-  </script>
+    let counter = 10;
+    const render = () => {
+        ReactDOM.render(<Container/>, root);
+    };
+    const countUp = () => {
+        counter += 1;
+        render();
+    };
+    const Container = () => (
+        <div>
+            <h3>Total clicks: {counter}</h3>
+            <button onClick={countUp}>Click me</button>
+        </div>
+    );
+    render();
+</script>
 </html>
